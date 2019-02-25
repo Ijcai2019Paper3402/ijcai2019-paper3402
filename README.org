@@ -1,0 +1,32 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+latex_compiler: xelatex
+* KDefective Command Line Parameter
+   | option    | meaning/type                                        | parameter                 |
+   |-----------+-----------------------------------------------------+---------------------------|
+   | -r        | input file (data file)                              | input file's name (path)  |
+   | -w        | output file (graph file)                            | output file's name (path) |
+   | -l        | log file (answer file)                              | answer file's name (path) |
+   | -O        | Operator Type                                       | solve/generate/compare    |
+   | -p        | prework flag                                        |                           |
+   | -t        | time limit for algorithm                            | time in second            |
+   | -a        | Algorithm Type                                      | Base(MADEC+)/RDS/IP       |
+   | -D        | DataStructure used by the algorithm                 | Set/Bitset                |
+   | -k        | k in k-defective                                    | an integer                |
+   | --noDiam  | Kill Diameter Reduction in Base algo                |                           |
+   | --noColor | Kill Color Reduction in Base algo                   |                           |
+   | -n        | number of vertex in the random graph                | an integer                |
+   | -d        | the dense of the edges in random graph              | an float                  |
+   | -h        | help                                                | (not implement yet)       |
+   | -G        | the type of graph the Program Read                  | clq/graph/SNAP            |
+   | -M        | set the maximum size of clique in the graph by hand | an integer                |
+
+* Full Steps for Deployment
+  #+BEGIN_SRC bash
+  git clone https://github.com/Ijcai2019Paper3402/ijcai2019-paper3402.git
+  cd ijcai2019-paper3402
+  tar -xzvf glpk-4.65.tar.gz
+  mv glpk-4.65 glpk
+  bash MyInstall.sh    #install glpk, all the files will be installed in ./glpk/
+  cmake -DNDEBUG=on .  
+  make && make install #generate the executable file in the current dir and ./Debug/ (if you have).
+  #+END_SRC
